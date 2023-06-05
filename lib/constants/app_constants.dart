@@ -6,7 +6,7 @@ TextStyle headstyle = TextStyle(
   fontWeight: FontWeight.bold,
   decoration: TextDecoration.underline,
   decorationStyle: TextDecorationStyle.solid,
-  decorationColor: Colors.amber.shade900,
+  decorationColor: Colors.pink.shade900,
   decorationThickness: 3,
   shadows: [Shadow(color: Colors.red.shade900, offset: Offset(0, -8))],
 );
@@ -15,4 +15,4 @@ TextStyle hintstyle =
     TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold);
 
 TextStyle greenstyle = TextStyle(
-    color: Colors.green.shade900, fontSize: 18, fontWeight: FontWeight.bold);
+    color: Colors.green.shade500, fontSize: 18, fontWeight: FontWeight.bold);

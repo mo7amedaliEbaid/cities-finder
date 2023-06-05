@@ -25,22 +25,23 @@ Widget buildnormalsearchscreen(
     BuildContext context, TextEditingController controller) {
   Size size = MediaQuery.of(context).size;
 
-  return Padding(
-    padding: EdgeInsets.fromLTRB(20, 50, 20, 20),
-    child: SingleChildScrollView(
-      child: Column(
-        children: [
-          MyTextField(context, controller),
-          Container(
-            height: size.height * .8,
-            width: size.width * .99,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("assets/earth.jpg"),
-                    fit: BoxFit.fitHeight)),
-          )
-        ],
-      ),
+  return SingleChildScrollView(
+    child: Stack(
+      children: [
+        Container(
+          height: size.height,
+          width: size.width,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/earth.jpg"),
+                  fit: BoxFit.fitHeight)),
+        ),
+        Positioned(
+            top: size.height * .2,
+            left: size.width * .07,
+            right: size.width * .07,
+            child: MyTextField(context, controller)),
+      ],
     ),
   );
 }
@@ -49,22 +50,22 @@ Widget buildwidesearchscreen(
     BuildContext context, TextEditingController controller) {
   Size size = MediaQuery.of(context).size;
 
-  return Padding(
-    padding: EdgeInsets.fromLTRB(20, 30, 20, 20),
-    child: SingleChildScrollView(
-      child: Column(
-        children: [
-          MyTextField(context, controller),
-          Container(
-            height: size.height * .75,
-            width: size.width * .99,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("assets/earth.jpg"),
-                    fit: BoxFit.fitWidth)),
-          )
-        ],
-      ),
+  return SingleChildScrollView(
+    child: Stack(
+      children: [
+        Container(
+          height: size.height,
+          width: size.width,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/earth.jpg"), fit: BoxFit.fitWidth)),
+        ),
+        Positioned(
+            top: size.height * .12,
+            left: size.width * .07,
+            right: size.width * .07,
+            child: MyTextField(context, controller)),
+      ],
     ),
   );
 }

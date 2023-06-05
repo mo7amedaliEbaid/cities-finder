@@ -1,27 +1,24 @@
 class CurrentWeather {
-  double temperature;
-  int windspeed;
-  int winddirection;
-  int weathercode;
-  int isDay;
-  String time;
+  double? temperature;
+  double? windspeed;
+  double? winddirection;
+  int? isDay;
+  String? time;
 
   CurrentWeather({
-    required this.temperature,
-    required this.windspeed,
-    required this.winddirection,
-    required this.weathercode,
-    required this.isDay,
-    required this.time,
+     this.temperature,
+     this.windspeed,
+     this.winddirection,
+     this.isDay,
+     this.time,
   });
 
   factory CurrentWeather.fromJson(Map<String, dynamic> json) =>
       CurrentWeather(
-        temperature: json["temperature"]?.toDouble(),
-        windspeed: json["windspeed"],
-        winddirection: json["winddirection"],
-        weathercode: json["weathercode"],
-        isDay: json["is_day"],
-        time: json["time"],
+        temperature: json["temperature"]?.toDouble()??null,
+        windspeed: json["windspeed"]??null,
+        winddirection: json["winddirection"]??null,
+        isDay: json["is_day"]??null,
+        time: json["time"]??null,
       );
   }

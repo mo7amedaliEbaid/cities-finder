@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled/business_logic/location_cubit.dart';
 import 'package:untitled/data/models/location_model.dart';
+import 'package:untitled/presentation/screens/weather_screen.dart';
 
 import '../../constants/app_constants.dart';
 import '../widgets/getweatherbutton_widget.dart';
@@ -27,7 +28,7 @@ class _CityLocationScreenState extends State<CityLocationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueAccent,
+      backgroundColor: Colors.indigo.shade900,
       body: BlocBuilder<LocationCubit, LocationState>(
         builder: (context, state) {
           if (state is LocationsLoaded) {
@@ -149,7 +150,14 @@ Widget buildcitylocationbody(
               ],
             ),
           ),
-          GetWeatherButton(context)
+          InkWell(
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => WeatherScreen(
+                        latitude: citylocations.first.latitude,
+                        longitude: citylocations.first.longitude)));
+              },
+              child: GetWeatherButton(context))
         ]),
   );
 }
