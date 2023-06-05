@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:html';
-
 class CityLocation {
   int id;
   String name;

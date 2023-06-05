@@ -24,9 +24,4 @@ class CurrentWeather {
         isDay: json["is_day"],
         time: json["time"],
       );
-  static List<CurrentWeather> weatherFromSnapshot(List weatherSnapshot) {
-    return weatherSnapshot.map((json) {
-      return CurrentWeather.fromJson(json);
-    }).toList();
   }
-}
