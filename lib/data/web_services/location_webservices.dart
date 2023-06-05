@@ -2,15 +2,15 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:untitled/constants/api_constants.dart';
 import 'package:untitled/data/models/location_model.dart';
-import 'package:http/http.dart'as http;
+import 'package:http/http.dart' as http;
+
 class LocationWebServices {
   List<CityLocation> citylocations = [];
 
   Future<List<CityLocation>> getcitylocation(
       {required String name, required int count}) async {
     var response = await http.get(Uri.parse(
-        "${ApiConstants.LOCATION_BASE_URL}${ApiConstants
-            .CITY_NAME}${name}&${ApiConstants.COUNT}${count}"));
+        "${ApiConstants.LOCATION_BASE_URL}${ApiConstants.CITY_NAME}${name}&${ApiConstants.COUNT}${count}"));
     print('Response status: ${response.statusCode}');
     log('Response body: ${response.body}');
     var data = jsonDecode(response.body);
