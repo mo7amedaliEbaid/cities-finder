@@ -3,7 +3,7 @@ class CityLocation {
   String name;
   double latitude;
   double longitude;
-  int elevation;
+  double elevation;
   String featureCode;
   String countryCode;
   String timezone;

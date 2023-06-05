@@ -5,8 +5,6 @@ import 'package:untitled/data/models/location_model.dart';
 import 'package:http/http.dart' as http;
 
 class LocationWebServices {
-  List<CityLocation> citylocations = [];
-
   Future<List<CityLocation>> getcitylocation(
       {required String name, required int count}) async {
     var response = await http.get(Uri.parse(
@@ -21,9 +19,11 @@ class LocationWebServices {
       print(data["results"].length.toString());
     }
     if (response.statusCode == 200) {
-      citylocations = CityLocation.locationsFromSnapshot(locationTempList);
-      return citylocations;
+      log(",,,,,,,,lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllloooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooollllllll");
+
+      return CityLocation.locationsFromSnapshot(locationTempList);
     } else {
+      log(",,,,,,,,llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll");
       throw Exception('Failed to load location');
     }
   }
