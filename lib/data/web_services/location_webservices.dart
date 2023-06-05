@@ -19,11 +19,8 @@ class LocationWebServices {
       print(data["results"].length.toString());
     }
     if (response.statusCode == 200) {
-      log(",,,,,,,,lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllloooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooollllllll");
-
       return CityLocation.locationsFromSnapshot(locationTempList);
     } else {
-      log(",,,,,,,,llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll");
       throw Exception('Failed to load location');
     }
   }

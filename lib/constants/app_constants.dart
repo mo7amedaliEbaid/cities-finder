@@ -1,2 +1,18 @@
-const SearchScreen='/';
-const LocationScreen='/loc';
+import 'package:flutter/material.dart';
+
+TextStyle headstyle = TextStyle(
+  color: Colors.transparent,
+  fontSize: 20,
+  fontWeight: FontWeight.bold,
+  decoration: TextDecoration.underline,
+  decorationStyle: TextDecorationStyle.solid,
+  decorationColor: Colors.amber.shade900,
+  decorationThickness: 3,
+  shadows: [Shadow(color: Colors.red.shade900, offset: Offset(0, -8))],
+);
+
+TextStyle hintstyle =
+    TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold);
+
+TextStyle greenstyle = TextStyle(
+    color: Colors.green.shade900, fontSize: 18, fontWeight: FontWeight.bold);

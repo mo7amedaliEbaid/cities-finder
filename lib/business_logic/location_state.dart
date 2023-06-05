@@ -4,6 +4,7 @@ part of 'location_cubit.dart';
 abstract class LocationState {}
 
 class LocationInitial extends LocationState {}
+
 class LocationsLoaded extends LocationState {
   final List<CityLocation> citylocations;
 

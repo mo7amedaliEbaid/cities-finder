@@ -3,6 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled/business_logic/location_cubit.dart';
 import 'package:untitled/data/models/location_model.dart';
 
+import '../../constants/app_constants.dart';
+import '../widgets/getweatherbutton_widget.dart';
+
 class CityLocationScreen extends StatefulWidget {
   CityLocationScreen({Key? key, required this.cityname}) : super(key: key);
   final String cityname;
@@ -24,18 +27,12 @@ class _CityLocationScreenState extends State<CityLocationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blueAccent,
       body: BlocBuilder<LocationCubit, LocationState>(
         builder: (context, state) {
           if (state is LocationsLoaded) {
             citylocations = (state).citylocations;
-            return Container(
-              height: 50,
-              width: 50,
-              child: Text(
-                citylocations.first.name,
-                style: TextStyle(color: Colors.black),
-              ),
-            );
+            return buildcitylocationbody(context, citylocations);
           } else {
             return Center(child: CircularProgressIndicator());
           }
@@ -43,4 +40,116 @@ class _CityLocationScreenState extends State<CityLocationScreen> {
       ),
     );
   }
+}
+
+Widget buildcitylocationbody(
+    BuildContext context, List<CityLocation> citylocations) {
+  Size size = MediaQuery.of(context).size;
+  return Padding(
+    padding: size.width < 480
+        ? EdgeInsets.all(45)
+        : EdgeInsets.fromLTRB(50, 40, 50, 10),
+    child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: 18.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "City Name",
+                  style: headstyle,
+                ),
+                Text(
+                  citylocations.first.name,
+                  style: hintstyle,
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 18.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Latitude",
+                  style: headstyle,
+                ),
+                Text(
+                  citylocations.first.latitude.toString(),
+                  style: hintstyle,
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 18.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Longitude",
+                  style: headstyle,
+                ),
+                Text(
+                  citylocations.first.longitude.toString(),
+                  style: hintstyle,
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 18.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Elevation",
+                  style: headstyle,
+                ),
+                Text(
+                  citylocations.first.elevation.toString(),
+                  style: hintstyle,
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 18.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Population",
+                  style: headstyle,
+                ),
+                Text(
+                  citylocations.first.population.toString(),
+                  style: hintstyle,
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 18.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Country",
+                  style: headstyle,
+                ),
+                Text(
+                  citylocations.first.country.toString(),
+                  style: hintstyle,
+                )
+              ],
+            ),
+          ),
+          GetWeatherButton(context)
+        ]),
+  );
 }

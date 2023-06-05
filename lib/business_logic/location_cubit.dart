@@ -8,8 +8,11 @@ part 'location_state.dart';
 class LocationCubit extends Cubit<LocationState> {
   final LocationRepo locationRepo;
   List<CityLocation> citylocations = [];
+
   LocationCubit(this.locationRepo) : super(LocationInitial());
-  List<CityLocation> getcitylocation({required String name,required int count}) {
+
+  List<CityLocation> getcitylocation(
+      {required String name, required int count}) {
     locationRepo.getlocations(name: name, count: count).then((locations) {
       emit(LocationsLoaded(locations));
       this.citylocations = locations;
