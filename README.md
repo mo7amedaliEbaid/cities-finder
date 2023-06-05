@@ -1,6 +1,6 @@
 # untitled
 
-A new Flutter project.
+A new Weather Flutter project.
 
 ## Getting Started
 
