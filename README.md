@@ -1,16 +1,20 @@
-# Weather App
+# Cities Finder.  
 
-A new Weather Flutter project.
+By Applying Bloc pattern principles,   
+I developed a simple flutter app and named it "Cities Finder".   
+Provides the location , population , time and weather for any city you search for.   
+A Responsive Ui for all mobile sizes and orientations.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Packages Used.   
+  http: ^0.13.0    
+  flutter_bloc: ^8.1.3 
+  
+## ScreenShots.   
+![alt text](https://github.com/mo7amedaliEbaid/cities-finder/blob/master/screen_shots/launcher_icon.jpg?raw=true)
+  
+  
+  ![alt text](https://github.com/mo7amedaliEbaid/cities-finder/blob/master/screen_shots/location_wideview.jpg?raw=true)
+  
+    
+  
+  you can find more screenshots in cities-finder/screen_shots
