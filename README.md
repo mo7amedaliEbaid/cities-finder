@@ -13,12 +13,6 @@ A Responsive Ui for all mobile sizes and orientations.
 ![alt text](https://github.com/mo7amedaliEbaid/cities-finder/blob/master/screen_shots/launcher_icon.jpg?raw=true)
   
   
-  ![alt text](https://github.com/mo7amedaliEbaid/cities-finder/blob/master/screen_shots/search_normalview.jpg?raw=true)
-  
-  
-  ![alt text](https://github.com/mo7amedaliEbaid/cities-finder/blob/master/screen_shots/nightweather_normalview.jpg?raw=true)
-  
-  
   ![alt text](https://github.com/mo7amedaliEbaid/cities-finder/blob/master/screen_shots/location_wideview.jpg?raw=true)
   
     
