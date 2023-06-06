@@ -13,15 +13,14 @@ A Responsive Ui for all mobile sizes and orientations.
 ![alt text](https://github.com/mo7amedaliEbaid/cities-finder/blob/master/screen_shots/launcher_icon.jpg?raw=true)
   
   
-  ![alt text](https://github.com/mo7amedaliEbaid/finder/blob/master/screen_shots/genres.png?raw=true)
+  ![alt text](https://github.com/mo7amedaliEbaid/cities-finder/blob/master/screen_shots/search_normalview.jpg?raw=true)
   
   
-  ![alt text](https://github.com/mo7amedaliEbaid/movies_app_flutter/blob/master/screen_shots/movie_details1.png?raw=true)
+  ![alt text](https://github.com/mo7amedaliEbaid/cities-finder/blob/master/screen_shots/nightweather_normalview.jpg?raw=true)
   
   
-  ![alt text](https://github.com/mo7amedaliEbaid/movies_app_flutter/blob/master/screen_shots/tv.png?raw=true)
+  ![alt text](https://github.com/mo7amedaliEbaid/cities-finder/blob/master/screen_shots/location_wideview.jpg?raw=true)
   
+    
   
-  ![alt text](https://github.com/mo7amedaliEbaid/movies_app_flutter/blob/master/screen_shots/signin.png?raw=true)  
-  
-  you can find more screenshots in my_movies_app_flutter/screen_shots
+  you can find more screenshots in cities-finder/screen_shots
