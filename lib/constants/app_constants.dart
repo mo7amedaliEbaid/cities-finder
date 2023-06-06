@@ -16,13 +16,9 @@ TextStyle hintstyle =
 
 TextStyle greenstyle = TextStyle(
     color: Colors.green.shade500, fontSize: 18, fontWeight: FontWeight.bold);
-TextStyle citydaystyle=TextStyle(
-  color: Colors.black,
-  fontSize: 25,
-  fontWeight: FontWeight.bold
-);
-TextStyle citynightstyle=TextStyle(
-    color: Colors.green,
-    fontSize: 25,
-    fontWeight: FontWeight.bold
-);
+
+TextStyle citydaystyle =
+    TextStyle(color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold);
+
+TextStyle citynightstyle =
+    TextStyle(color: Colors.green, fontSize: 25, fontWeight: FontWeight.bold);

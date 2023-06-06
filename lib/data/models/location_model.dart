@@ -26,18 +26,18 @@ class CityLocation {
   });
 
   factory CityLocation.fromJson(Map<String, dynamic> json) => CityLocation(
-    id: json["id"],
-    name: json["name"],
-    latitude: json["latitude"]?.toDouble(),
-    longitude: json["longitude"]?.toDouble(),
-    elevation: json["elevation"],
-    featureCode: json["feature_code"],
-    countryCode: json["country_code"],
-    timezone: json["timezone"],
-    population: json["population"],
-    countryId: json["country_id"],
-    country: json["country"],
-  );
+        id: json["id"],
+        name: json["name"],
+        latitude: json["latitude"]?.toDouble(),
+        longitude: json["longitude"]?.toDouble(),
+        elevation: json["elevation"],
+        featureCode: json["feature_code"],
+        countryCode: json["country_code"],
+        timezone: json["timezone"],
+        population: json["population"],
+        countryId: json["country_id"],
+        country: json["country"],
+      );
 
   static List<CityLocation> locationsFromSnapshot(List locationSnapshot) {
     return locationSnapshot.map((json) {
