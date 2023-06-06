@@ -1,6 +1,6 @@
-# Weather App
+# Cities Finder
 
-A new Weather Flutter project.
+By Applying Bloc pattern principles  I developed a simple flutter app i named it "Cities Finder"  
 
 ## Getting Started
 
