@@ -6,9 +6,9 @@ Widget GetWeatherButton(BuildContext context) {
   Size size = MediaQuery.of(context).size;
   return Container(
       margin: size.width < 480
-          ? EdgeInsets.symmetric(vertical: 50)
-          : EdgeInsets.symmetric(vertical: 5),
-      height: size.width < 480 ? size.height * .25 : size.height * .2,
+          ? EdgeInsets.symmetric(vertical: 20)
+          : EdgeInsets.symmetric(vertical: 0),
+      height: size.width < 480 ? size.height * .24 : size.height * .095,
       width: size.width * .9,
       child: size.width < 480
           ? Column(
@@ -22,8 +22,7 @@ Widget GetWeatherButton(BuildContext context) {
                           fit: BoxFit.contain)),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 8.0, vertical: 1),
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Text(
                     "View Today's Weather",
                     style: greenstyle,
@@ -31,25 +30,27 @@ Widget GetWeatherButton(BuildContext context) {
                 ),
               ],
             )
-          : Row(
-              children: [
-                Container(
-                  //  margin: EdgeInsets.symmetric(vertical: 50),
-                  height: size.height * .18,
-                  width: size.width * .4,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage("assets/weather.png"),
-                          fit: BoxFit.contain)),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 8.0, vertical: 1),
-                  child: Text(
-                    "View Today's Weather",
-                    style: greenstyle,
+          : Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 188.0),
+              child: Row(
+                children: [
+                  Container(
+                    //  margin: EdgeInsets.symmetric(vertical: 50),
+                    height: size.height * .08,
+                    width: size.width * .08,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage("assets/weather.png"),
+                            fit: BoxFit.fill)),
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Text(
+                      "View Today's Weather",
+                      style: greenstyle,
+                    ),
+                  ),
+                ],
+              ),
             ));
 }

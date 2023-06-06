@@ -1,9 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.untitled">
    <application
-        android:label="untitled"
+        android:icon="@mipmap/mylauncher_ic"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:label="Cities Finder">
         <activity
             android:name=".MainActivity"
             android:exported="true"

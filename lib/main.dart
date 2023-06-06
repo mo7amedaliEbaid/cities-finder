@@ -28,7 +28,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Search World",
       debugShowCheckedModeBanner: false,
       home: SearchLocationScreen(),
     );

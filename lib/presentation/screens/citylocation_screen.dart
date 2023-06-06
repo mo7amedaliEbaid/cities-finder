@@ -48,8 +48,8 @@ Widget buildcitylocationbody(
   Size size = MediaQuery.of(context).size;
   return Padding(
     padding: size.width < 480
-        ? EdgeInsets.all(45)
-        : EdgeInsets.fromLTRB(50, 40, 50, 10),
+        ? EdgeInsets.fromLTRB(45,45,45,10)
+        : EdgeInsets.fromLTRB(50, 0, 40, 0),
     child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -150,14 +150,17 @@ Widget buildcitylocationbody(
               ],
             ),
           ),
-          InkWell(
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => WeatherScreen(
-                        latitude: citylocations.first.latitude,
-                        longitude: citylocations.first.longitude)));
-              },
-              child: GetWeatherButton(context))
+          Flexible(
+            child: InkWell(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => WeatherScreen(
+                          latitude: citylocations.first.latitude,
+                          longitude: citylocations.first.longitude,
+                        cityname: citylocations.first.name,)));
+                },
+                child: GetWeatherButton(context)),
+          )
         ]),
   );
 }

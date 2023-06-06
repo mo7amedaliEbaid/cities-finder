@@ -6,10 +6,11 @@ import 'package:untitled/data/models/weather_model.dart';
 import '../../constants/app_constants.dart';
 
 class WeatherScreen extends StatefulWidget {
-  WeatherScreen({Key? key, required this.latitude, required this.longitude})
+  WeatherScreen({Key? key, required this.latitude, required this.longitude, required this.cityname})
       : super(key: key);
   final double latitude;
   final double longitude;
+  final String cityname;
 
   @override
   State<WeatherScreen> createState() => _WeatherScreenState();
@@ -31,7 +32,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.blueAccent,
+      backgroundColor: Colors.indigo.shade900,
       body: BlocBuilder<CityWeatherCubit, CityWeatherState>(
         builder: (context, state) {
           if (state is WeatherLoaded) {
@@ -47,7 +48,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       fit: size.width < 480
                           ? BoxFit.fitHeight
                           : BoxFit.fitWidth)),
-              child: buildcityweatherbody(context, currentWeather),
+              child: buildcityweatherbody(context, currentWeather,widget.cityname),
             );
           } else {
             return Center(child: CircularProgressIndicator());
@@ -59,16 +60,20 @@ class _WeatherScreenState extends State<WeatherScreen> {
 }
 
 Widget buildcityweatherbody(
-    BuildContext context, CurrentWeather currentWeather) {
+    BuildContext context, CurrentWeather currentWeather,String cityname) {
   Size size = MediaQuery.of(context).size;
   return Padding(
     padding: size.width < 480
         ? EdgeInsets.all(45)
-        : EdgeInsets.fromLTRB(50, 40, 50, 10),
+        : EdgeInsets.all(50),
     child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0,28.0,0,50),
+            child: Text(cityname,style:currentWeather.isDay==0?citynightstyle: citydaystyle,),
+          ),
           Padding(
             padding: const EdgeInsets.only(bottom: 18.0),
             child: Row(
@@ -128,7 +133,7 @@ Widget buildcityweatherbody(
                 ),
                 Text(
                   currentWeather.time.toString(),
-                  style: currentWeather.isDay == 1 ? greenstyle : hintstyle,
+                  style:  hintstyle,
                 )
               ],
             ),
