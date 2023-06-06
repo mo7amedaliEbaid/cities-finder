@@ -1,6 +1,8 @@
 # Cities Finder
 
-By Applying Bloc pattern principles  I developed a simple flutter app i named it "Cities Finder"  
+By Applying Bloc pattern principles  
+I developed a simple flutter app 
+i named it "Cities Finder"  
 
 ## Getting Started
 
