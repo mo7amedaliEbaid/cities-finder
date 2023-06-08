@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_offline/flutter_offline.dart';
 import 'package:untitled/business_logic/location_cubit.dart';
 import 'package:untitled/data/models/location_model.dart';
 import 'package:untitled/presentation/screens/weather_screen.dart';
@@ -29,15 +30,45 @@ class _CityLocationScreenState extends State<CityLocationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.indigo.shade900,
-      body: BlocBuilder<LocationCubit, LocationState>(
-        builder: (context, state) {
-          if (state is LocationsLoaded) {
-            citylocations = (state).citylocations;
-            return buildcitylocationbody(context, citylocations);
+      body: OfflineBuilder(
+        connectivityBuilder: (
+          BuildContext context,
+          ConnectivityResult connectivity,
+          Widget child,
+        ) {
+          final bool connected = connectivity != ConnectivityResult.none;
+          if (connected) {
+            return BlocBuilder<LocationCubit, LocationState>(
+              builder: (context, state) {
+                if (state is LocationsLoaded) {
+                  citylocations = (state).citylocations;
+                  return buildcitylocationbody(context, citylocations);
+                } else {
+                  return Center(child: CircularProgressIndicator());
+                }
+              },
+            );
           } else {
-            return Center(child: CircularProgressIndicator());
+            return Center(
+              child: Container(
+                margin: EdgeInsets.symmetric(vertical: 50),
+                child: Column(
+                  children: [
+                    Icon(
+                      Icons.signal_wifi_statusbar_connected_no_internet_4_sharp,
+                      size: 60,
+                      color: Colors.white,
+                    ),
+                    Text("Please Check Your Internet Connection",style: hintstyle,)
+                  ],
+                ),
+              ),
+            );
           }
         },
+        child: Center(
+          child: CircularProgressIndicator(),
+        ),
       ),
     );
   }
@@ -48,119 +79,125 @@ Widget buildcitylocationbody(
   Size size = MediaQuery.of(context).size;
   return Padding(
     padding: size.width < 480
-        ? EdgeInsets.fromLTRB(45,45,45,10)
+        ? EdgeInsets.fromLTRB(45, 45, 45, 10)
         : EdgeInsets.fromLTRB(50, 0, 40, 0),
-    child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 18.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "City Name",
-                  style: headstyle,
+    child: SingleChildScrollView(
+      child: Container(
+        height: size.width < 480 ? 700 : 400,
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 18.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "City Name",
+                      style: headstyle,
+                    ),
+                    Text(
+                      citylocations.first.name,
+                      style: hintstyle,
+                    )
+                  ],
                 ),
-                Text(
-                  citylocations.first.name,
-                  style: hintstyle,
-                )
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 18.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Latitude",
-                  style: headstyle,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 18.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Latitude",
+                      style: headstyle,
+                    ),
+                    Text(
+                      citylocations.first.latitude.toString(),
+                      style: hintstyle,
+                    )
+                  ],
                 ),
-                Text(
-                  citylocations.first.latitude.toString(),
-                  style: hintstyle,
-                )
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 18.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Longitude",
-                  style: headstyle,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 18.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Longitude",
+                      style: headstyle,
+                    ),
+                    Text(
+                      citylocations.first.longitude.toString(),
+                      style: hintstyle,
+                    )
+                  ],
                 ),
-                Text(
-                  citylocations.first.longitude.toString(),
-                  style: hintstyle,
-                )
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 18.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Elevation",
-                  style: headstyle,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 18.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Elevation",
+                      style: headstyle,
+                    ),
+                    Text(
+                      citylocations.first.elevation.toString(),
+                      style: hintstyle,
+                    )
+                  ],
                 ),
-                Text(
-                  citylocations.first.elevation.toString(),
-                  style: hintstyle,
-                )
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 18.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Population",
-                  style: headstyle,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 18.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Population",
+                      style: headstyle,
+                    ),
+                    Text(
+                      citylocations.first.population.toString(),
+                      style: hintstyle,
+                    )
+                  ],
                 ),
-                Text(
-                  citylocations.first.population.toString(),
-                  style: hintstyle,
-                )
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 18.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Country",
-                  style: headstyle,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 18.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Country",
+                      style: headstyle,
+                    ),
+                    Text(
+                      citylocations.first.country.toString(),
+                      style: hintstyle,
+                    )
+                  ],
                 ),
-                Text(
-                  citylocations.first.country.toString(),
-                  style: hintstyle,
-                )
-              ],
-            ),
-          ),
-          Flexible(
-            child: InkWell(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => WeatherScreen(
-                          latitude: citylocations.first.latitude,
-                          longitude: citylocations.first.longitude,
-                        cityname: citylocations.first.name,)));
-                },
-                child: GetWeatherButton(context)),
-          )
-        ]),
+              ),
+              Flexible(
+                child: InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => WeatherScreen(
+                                latitude: citylocations.first.latitude,
+                                longitude: citylocations.first.longitude,
+                                cityname: citylocations.first.name,
+                              )));
+                    },
+                    child: GetWeatherButton(context)),
+              )
+            ]),
+      ),
+    ),
   );
 }
