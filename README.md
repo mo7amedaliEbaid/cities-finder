@@ -18,11 +18,10 @@ https://drive.google.com/drive/folders/1v25qdOsVpeoBOYMixr2yDtd_m9zHEvJH
 ![alt text](https://github.com/mo7amedaliEbaid/cities-finder/blob/master/screen_shots/launcher_icon.jpg?raw=true)
   
   
-  ![alt text](https://github.com/mo7amedaliEbaid/cities-finder/blob/master/screen_shots/location_wideview.jpg?raw=true)
+  ![alt text](https://github.com/mo7amedaliEbaid/cities-finder/blob/master/screen_shots/offline.jpg?raw=true)
   
   
-  
-  ![alt text](https://github.com/mo7amedaliEbaid/cities-finder/blob/master/screen_shots/nightweather_normalview.jpg?raw=true)
+
   
   
   you can find more screenshots in cities-finder/screen_shots
