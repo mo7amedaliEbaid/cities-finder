@@ -36,12 +36,12 @@ Widget GetWeatherButton(BuildContext context) {
                 children: [
                   Container(
                     //  margin: EdgeInsets.symmetric(vertical: 50),
-                    height: size.height * .08,
-                    width: size.width * .08,
+                    height: size.height * .1,
+                    width: size.width * .1,
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage("assets/weather.png"),
-                            fit: BoxFit.fill)),
+                            fit: BoxFit.fitHeight)),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),

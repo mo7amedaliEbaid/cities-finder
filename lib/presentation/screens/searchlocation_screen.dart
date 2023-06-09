@@ -33,7 +33,7 @@ Widget buildnormalsearchscreen(
           width: size.width,
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("assets/earth.jpg"),
+                  image: AssetImage("screen_shots/world3.jpg"),
                   fit: BoxFit.fitHeight)),
         ),
         Positioned(
@@ -58,7 +58,7 @@ Widget buildwidesearchscreen(
           width: size.width,
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("assets/earth.jpg"), fit: BoxFit.fitWidth)),
+                  image: AssetImage("screen_shots/world3.jpg"), fit: BoxFit.fitWidth)),
         ),
         Positioned(
             top: size.height * .12,

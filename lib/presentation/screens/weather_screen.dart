@@ -47,8 +47,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: currentWeather.isDay == 1
-                          ? AssetImage("assets/day.jpg")
-                          : AssetImage("assets/night.jpg"),
+                          ? AssetImage("screen_shots/sunny.jpeg")
+                          : AssetImage("screen_shots/night3.jpg"),
                       fit: size.width < 480
                           ? BoxFit.fitHeight
                           : BoxFit.fitWidth)),
@@ -137,9 +137,14 @@ Widget buildcityweatherbody(
                   "Date/Time",
                   style: headstyle,
                 ),
-                Text(
-                  currentWeather.time.toString(),
-                  style: hintstyle,
+                Container(
+                  width: 150,
+                  height: 20,
+                  child: Text(
+                    currentWeather.time.toString(),
+                    style: hintstyle1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 )
               ],
             ),

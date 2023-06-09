@@ -13,6 +13,9 @@ TextStyle headstyle = TextStyle(
 
 TextStyle hintstyle =
     TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold);
+TextStyle hintstyle1 =
+TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold,letterSpacing: 3);
+
 
 TextStyle greenstyle = TextStyle(
     color: Colors.green.shade500, fontSize: 18, fontWeight: FontWeight.bold);

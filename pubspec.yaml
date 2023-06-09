@@ -66,6 +66,10 @@ flutter:
    - assets/weather.png
    - assets/day.jpg
    - assets/night.jpg
+   - screen_shots/night3.jpg
+   - screen_shots/sunny.jpeg
+   - screen_shots/world2.jpg
+   - screen_shots/world3.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
