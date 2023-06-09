@@ -11,16 +11,18 @@ Widget MyTextField(BuildContext context, TextEditingController controller) {
         : EdgeInsets.symmetric(horizontal: 20),
     height: size.width < 480 ? size.height * .06 : size.height * .1,
     width: size.width < 480 ? size.width * .85 : size.width * .7,
-    decoration: BoxDecoration(
+   /* decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.deepPurple, width: 2)),
+        border: Border.all(color: Colors.black, width: 2)),*/
     child: TextField(
       controller: controller,
-      style: size.width < 480?TextStyle(color: Colors.black):TextStyle(color: Colors.white),
+      style: TextStyle(color: Colors.black),
       decoration: InputDecoration(
         hintText: "Find A City",
-        hintStyle: size.width < 480?TextStyle(color: Colors.black):TextStyle(color: Colors.white),
+        hintStyle: TextStyle(color: Colors.black),
         border: InputBorder.none,
+        fillColor: Colors.white,
+        filled: true
       ),
       onSubmitted: (searchedforcity) {
         searchedforcity = controller.text.trim().toString();

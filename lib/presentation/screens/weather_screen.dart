@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled/business_logic/city_weather_cubit.dart';
 import 'package:untitled/data/models/weather_model.dart';
+import 'package:untitled/presentation/screens/searchlocation_screen.dart';
 
 import '../../constants/app_constants.dart';
 
@@ -52,8 +53,10 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       fit: size.width < 480
                           ? BoxFit.fitHeight
                           : BoxFit.fitWidth)),
-              child: buildcityweatherbody(
-                  context, currentWeather, widget.cityname),
+              child: SingleChildScrollView(
+                child: buildcityweatherbody(
+                    context, currentWeather, widget.cityname),
+              ),
             );
           } else {
             return Center(child: CircularProgressIndicator());
@@ -145,10 +148,31 @@ Widget buildcityweatherbody(
                     style: hintstyle1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                )
+                ),
               ],
             ),
           ),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => SearchLocationScreen()));
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                color: Color(0xffcedbdb),
+                borderRadius: BorderRadius.circular(10)
+              ),
+              margin: EdgeInsets.all(20),
+              width: 200,
+              height: 40,
+              child: Center(
+                child: Text(
+                  "Search For Another City",
+                  style: greenstyle,
+                ),
+              ),
+            ),
+          )
         ]),
   );
 }
