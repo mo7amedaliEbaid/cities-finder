@@ -16,10 +16,10 @@ Widget MyTextField(BuildContext context, TextEditingController controller) {
         border: Border.all(color: Colors.deepPurple, width: 2)),
     child: TextField(
       controller: controller,
-      style: TextStyle(color: Colors.black),
+      style: size.width < 480?TextStyle(color: Colors.black):TextStyle(color: Colors.white),
       decoration: InputDecoration(
         hintText: "Find A City",
-        hintStyle: TextStyle(color: Colors.black),
+        hintStyle: size.width < 480?TextStyle(color: Colors.black):TextStyle(color: Colors.white),
         border: InputBorder.none,
       ),
       onSubmitted: (searchedforcity) {
