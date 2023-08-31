@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:untitled/presentation/widgets/mytextfield_widget.dart';
 
 class SearchLocationScreen extends StatelessWidget {
@@ -7,17 +8,57 @@ class SearchLocationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.blueAccent,
-        body: LayoutBuilder(
-          builder: (BuildContext ctx, BoxConstraints constraints) {
-            if (constraints.maxWidth < 480) {
-              return buildnormalsearchscreen(context, controller);
-            } else {
-              return buildwidesearchscreen(context, controller);
-            }
-          },
-        ));
+    Future<bool> _onWillPop() async {
+      return (await showDialog<bool>(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: const Text(
+                "Exit Application",
+              ),
+              content: const Text(
+                "Are You Sure?",
+              ),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text(
+                    "Yes",
+                    style: TextStyle(
+                      color: Colors.red,
+                    ),
+                  ),
+                  onPressed: () {
+                    SystemNavigator.pop();
+                  },
+                ),
+                TextButton(
+                  child: const Text("No"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            ),
+          )) ??
+          false;
+    }
+
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Scaffold(
+            backgroundColor: Colors.blueAccent,
+            body: LayoutBuilder(
+              builder: (BuildContext ctx, BoxConstraints constraints) {
+                if (constraints.maxWidth < 480) {
+                  return buildnormalsearchscreen(context, controller);
+                } else {
+                  return buildwidesearchscreen(context, controller);
+                }
+              },
+            )),
+      ),
+    );
   }
 }
 
@@ -58,7 +99,8 @@ Widget buildwidesearchscreen(
           width: size.width,
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("screen_shots/world3.jpg"), fit: BoxFit.fitWidth)),
+                  image: AssetImage("screen_shots/world3.jpg"),
+                  fit: BoxFit.fitWidth)),
         ),
         Positioned(
             top: size.height * .12,

@@ -32,6 +32,20 @@ class _CityLocationScreenState extends State<CityLocationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF276875),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        leading: GestureDetector(
+          onTap: (){
+            Navigator.pop(context);
+          },
+           child: Padding(
+             padding: const EdgeInsets.all(8.0),
+             child: Icon(Icons.arrow_back_ios),
+           ),
+        ),
+      ),
       body: OfflineBuilder(
         connectivityBuilder: (
           BuildContext context,
@@ -81,7 +95,7 @@ Widget buildcitylocationbody(
   Size size = MediaQuery.of(context).size;
   return Padding(
     padding: size.width < 480
-        ? EdgeInsets.fromLTRB(45, 45, 45, 10)
+        ? EdgeInsets.fromLTRB(45, 0, 45, 10)
         : EdgeInsets.fromLTRB(50, 0, 40, 0),
     child: SingleChildScrollView(
       child: Container(
@@ -97,7 +111,6 @@ Widget buildcitylocationbody(
                           builder: (context) => MapScreen(
                             latitude: citylocations.first.latitude,
                             longitude: citylocations.first.longitude,
-                          //  cityname: citylocations.first.name,
                           )));
                     },
                     child: GotomapsButton(context)),
@@ -209,7 +222,8 @@ Widget buildcitylocationbody(
                               )));
                     },
                     child: GetWeatherButton(context)),
-              )
+              ),
+              SizedBox(height: 110,)
             ]),
       ),
     ),

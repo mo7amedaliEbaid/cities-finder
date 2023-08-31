@@ -309,7 +309,16 @@ class _MapScreenState extends State<MapScreen> {
                     ),
                   ],
                 )),
-          )
+          ),
+          Positioned(
+            top: 40,
+            left: 20,
+            child: GestureDetector(
+                onTap: (){
+                  Navigator.pop(context);
+                },
+                child: Icon(Icons.arrow_back_ios,color: Colors.black,size: 35,)),
+          ),
         ],
       ),
     );
