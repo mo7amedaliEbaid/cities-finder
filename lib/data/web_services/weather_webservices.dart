@@ -13,7 +13,7 @@ class WeatherWebServices {
       required bool currentweather}) async {
     try {
       var response = await http.get(Uri.parse(
-          "${ApiConstants.WEARTHER_BASE_URL}${ApiConstants.LATITUDE}${latitude}&${ApiConstants.LONGITUDE}${longitude}&${ApiConstants.CURRENT_WEATHER}${currentweather}"));
+          "${ApiConstants.WEARTHER_BASE_URL}${ApiConstants.LATITUDE}${latitude.toDouble()}&${ApiConstants.LONGITUDE}${longitude.toDouble()}&${ApiConstants.CURRENT_WEATHER}${currentweather}"));
       print("response ${jsonDecode(response.body)}");
       var data = jsonDecode(response.body);
       if (response.statusCode != 200) {
