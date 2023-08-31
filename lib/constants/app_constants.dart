@@ -6,9 +6,9 @@ TextStyle headstyle = TextStyle(
   fontWeight: FontWeight.bold,
   decoration: TextDecoration.underline,
   decorationStyle: TextDecorationStyle.solid,
-  decorationColor: Colors.pink.shade900,
+  decorationColor: Color(0xFF153B30),
   decorationThickness: 3,
-  shadows: [Shadow(color: Colors.red.shade900, offset: Offset(0, -8))],
+  shadows: [Shadow(color: Color(0xFF48AB8C), offset: Offset(0, -8))],
 );
 
 TextStyle hintstyle =

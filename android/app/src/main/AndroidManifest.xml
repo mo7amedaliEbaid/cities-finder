@@ -1,9 +1,21 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.untitled">
+   <uses-permission android:name="android.permission.INTERNET"/>
+   <!-- Speech To Text configration -->
+   <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+   <!-- Geolocator Configration Start -->
+   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+   <!-- Geolocator Configration end -->
+   <!-- Local Notification -->
+   <uses-permission android:name="android.permission.VIBRATE" />
+   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
    <application
         android:icon="@mipmap/mylauncher_ic"
         android:name="${applicationName}"
         android:label="Cities Finder">
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

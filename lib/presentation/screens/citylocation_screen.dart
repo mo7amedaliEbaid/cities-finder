@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_offline/flutter_offline.dart';
 import 'package:untitled/business_logic/location_cubit.dart';
 import 'package:untitled/data/models/location_model.dart';
+import 'package:untitled/presentation/screens/map_screen.dart';
 import 'package:untitled/presentation/screens/weather_screen.dart';
+import 'package:untitled/presentation/widgets/gotomaps_button.dart';
 
 import '../../constants/app_constants.dart';
 import '../widgets/getweatherbutton_widget.dart';
@@ -29,7 +31,7 @@ class _CityLocationScreenState extends State<CityLocationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.indigo.shade900,
+      backgroundColor: Color(0xFF276875),
       body: OfflineBuilder(
         connectivityBuilder: (
           BuildContext context,
@@ -88,6 +90,18 @@ Widget buildcitylocationbody(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Flexible(
+                child: InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => MapScreen(
+                            latitude: citylocations.first.latitude,
+                            longitude: citylocations.first.longitude,
+                          //  cityname: citylocations.first.name,
+                          )));
+                    },
+                    child: GotomapsButton(context)),
+              ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 18.0),
                 child: Row(
@@ -104,7 +118,7 @@ Widget buildcitylocationbody(
                   ],
                 ),
               ),
-              Padding(
+            /*  Padding(
                 padding: const EdgeInsets.only(bottom: 18.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -135,7 +149,7 @@ Widget buildcitylocationbody(
                     )
                   ],
                 ),
-              ),
+              ),*/
               Padding(
                 padding: const EdgeInsets.only(bottom: 18.0),
                 child: Row(
