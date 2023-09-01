@@ -63,8 +63,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
                             ? ColorFilter.mode(Colors.amber.shade200, BlendMode.colorBurn)
                             : ColorFilter.mode(Colors.black, BlendMode.color),*/
                         image: currentWeather.isDay == 1
-                            ? AssetImage("screen_shots/sunny.jpeg")
-                            : AssetImage("screen_shots/night3.jpg"),
+                            ? AssetImage("assets/sunny.jpeg")
+                            : AssetImage("assets/night3.jpg"),
                         fit: size.width < 480
                             ? BoxFit.fitHeight
                             : BoxFit.fitWidth),

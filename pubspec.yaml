@@ -34,12 +34,6 @@ flutter:
   uses-material-design: true
 
   assets:
-   - assets/earth.jpg
-   - assets/weather.png
-   - assets/day.jpg
-   - assets/night.jpg
-   - screen_shots/night3.jpg
-   - screen_shots/sunny.jpeg
-   - screen_shots/world2.jpg
-   - screen_shots/world3.jpg
+   - assets/
+
 
