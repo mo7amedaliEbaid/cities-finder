@@ -2,12 +2,11 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 import 'package:untitled/business_logic/city_weather_cubit.dart';
 import 'package:untitled/data/models/weather_model.dart';
 import 'package:untitled/presentation/screens/searchlocation_screen.dart';
 
-import '../../constants/app_constants.dart';
+import '../../constants/styles.dart';
 
 class WeatherScreen extends StatefulWidget {
   WeatherScreen(
@@ -39,12 +38,6 @@ class _WeatherScreenState extends State<WeatherScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
-    /*log(currentWeather.time.toString());
-    int idx = currentWeather.time!.indexOf("T");
-    List parts = [currentWeather.time!.substring(0,idx).trim(), currentWeather.time!.substring(idx+1).trim()];
-    String date=parts.first;
-    String time=parts.last;
-    log(parts.toString());*/
     return Scaffold(
       backgroundColor: Colors.indigo.shade900,
       body: BlocBuilder<CityWeatherCubit, CityWeatherState>(
@@ -110,6 +103,32 @@ class _WeatherScreenState extends State<WeatherScreen> {
 Widget buildcityweatherbody(BuildContext context, CurrentWeather currentWeather,
     String cityname, String date, String time) {
   Size size = MediaQuery.of(context).size;
+
+  _buildweatherrow(String lefttext, String righttext) {
+    return Container(
+      padding: const EdgeInsets.all(18.0),
+      margin: EdgeInsets.symmetric(vertical: 8),
+      decoration: BoxDecoration(
+          color: Colors.green.shade900,
+          borderRadius: BorderRadius.circular(10)),
+      child: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              lefttext,
+              style: headstyle,
+            ),
+            Text(
+              righttext,
+              style: hintstyle,
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
   return Padding(
     padding: size.width < 480 ? EdgeInsets.all(45) : EdgeInsets.all(50),
     child: Column(
@@ -130,110 +149,20 @@ Widget buildcityweatherbody(BuildContext context, CurrentWeather currentWeather,
           SizedBox(
             height: 22,
           ),
-          Container(
-            padding: const EdgeInsets.all(18.0),
-            margin: EdgeInsets.symmetric(vertical: 8),
-            decoration: BoxDecoration(
-                color: Colors.green.shade900,
-                borderRadius: BorderRadius.circular(10)),
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Temperature",
-                    style: headstyle,
-                  ),
-                  Text(
-                    currentWeather.temperature.toString(),
-                    style: hintstyle,
-                  )
-                ],
-              ),
-            ),
+          _buildweatherrow(
+            "Temperature",
+            currentWeather.temperature.toString(),
           ),
-          Container(
-            padding: const EdgeInsets.all(18.0),
-            margin: EdgeInsets.symmetric(vertical: 8),
-            decoration: BoxDecoration(
-                color: Colors.green.shade900,
-                borderRadius: BorderRadius.circular(10)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Wind Speed",
-                  style: headstyle,
-                ),
-                Text(
-                  currentWeather.windspeed.toString(),
-                  style: hintstyle,
-                )
-              ],
-            ),
+          _buildweatherrow(
+            "Wind Speed",
+            currentWeather.windspeed.toString(),
           ),
-          Container(
-            padding: const EdgeInsets.all(18.0),
-            margin: EdgeInsets.symmetric(vertical: 8),
-            decoration: BoxDecoration(
-                color: Colors.green.shade900,
-                borderRadius: BorderRadius.circular(10)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Wind Direction",
-                  style: headstyle,
-                ),
-                Text(
-                  currentWeather.winddirection.toString(),
-                  style: hintstyle,
-                )
-              ],
-            ),
+          _buildweatherrow(
+            "Wind Direction",
+            currentWeather.winddirection.toString(),
           ),
-          Container(
-            padding: const EdgeInsets.all(18.0),
-            margin: EdgeInsets.symmetric(vertical: 8),
-            decoration: BoxDecoration(
-                color: Colors.green.shade900,
-                borderRadius: BorderRadius.circular(10)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Date",
-                  style: headstyle,
-                ),
-                Text(
-                  date,
-                  style: hintstyle1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(18.0),
-            margin: EdgeInsets.symmetric(vertical: 8),
-            decoration: BoxDecoration(
-                color: Colors.green.shade900,
-                borderRadius: BorderRadius.circular(10)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Time",
-                  style: headstyle,
-                ),
-                Text(
-                  time,
-                  style: hintstyle1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
-            ),
-          ),
+          _buildweatherrow("Date", date),
+          _buildweatherrow("Time", time),
           InkWell(
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(

@@ -19,8 +19,6 @@ dependencies:
   flutter_bloc:
   flutter_offline:
   google_maps_flutter: ^2.4.1
-  custom_info_window: ^1.0.1
-  intl: 
 
 dev_dependencies:
   flutter_test:

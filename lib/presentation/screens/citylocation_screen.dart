@@ -7,7 +7,7 @@ import 'package:untitled/presentation/screens/map_screen.dart';
 import 'package:untitled/presentation/screens/weather_screen.dart';
 import 'package:untitled/presentation/widgets/gotomaps_button.dart';
 
-import '../../constants/app_constants.dart';
+import '../../constants/styles.dart';
 import '../widgets/getweatherbutton_widget.dart';
 
 class CityLocationScreen extends StatefulWidget {
@@ -37,13 +37,13 @@ class _CityLocationScreenState extends State<CityLocationScreen> {
         elevation: 0,
         automaticallyImplyLeading: false,
         leading: GestureDetector(
-          onTap: (){
+          onTap: () {
             Navigator.pop(context);
           },
-           child: Padding(
-             padding: const EdgeInsets.all(8.0),
-             child: Icon(Icons.arrow_back_ios),
-           ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(Icons.arrow_back_ios),
+          ),
         ),
       ),
       body: OfflineBuilder(
@@ -75,7 +75,10 @@ class _CityLocationScreenState extends State<CityLocationScreen> {
                       size: 60,
                       color: Colors.white,
                     ),
-                    Text("Please Check Your Internet Connection",style: hintstyle,)
+                    Text(
+                      "Please Check Your Internet Connection",
+                      style: hintstyle,
+                    )
                   ],
                 ),
               ),
@@ -92,7 +95,28 @@ class _CityLocationScreenState extends State<CityLocationScreen> {
 
 Widget buildcitylocationbody(
     BuildContext context, List<CityLocation> citylocations) {
+
   Size size = MediaQuery.of(context).size;
+
+  _buildlocationrow(String lefttext, String righttext) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 18.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            lefttext,
+            style: headstyle,
+          ),
+          Text(
+            righttext,
+            style: hintstyle,
+          )
+        ],
+      ),
+    );
+  }
+
   return Padding(
     padding: size.width < 480
         ? EdgeInsets.fromLTRB(45, 0, 45, 10)
@@ -109,107 +133,22 @@ Widget buildcitylocationbody(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => MapScreen(
-                            latitude: citylocations.first.latitude,
-                            longitude: citylocations.first.longitude,
-                          )));
+                                latitude: citylocations.first.latitude,
+                                longitude: citylocations.first.longitude,
+                              )));
                     },
                     child: GotomapsButton(context)),
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 18.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "City Name",
-                      style: headstyle,
-                    ),
-                    Text(
-                      citylocations.first.name,
-                      style: hintstyle,
-                    )
-                  ],
-                ),
+              _buildlocationrow("City Name", citylocations.first.name),
+              _buildlocationrow(
+                  "Elevation", citylocations.first.elevation.toString()),
+              _buildlocationrow(
+                "Population",
+                citylocations.first.population.toString(),
               ),
-            /*  Padding(
-                padding: const EdgeInsets.only(bottom: 18.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Latitude",
-                      style: headstyle,
-                    ),
-                    Text(
-                      citylocations.first.latitude.toString(),
-                      style: hintstyle,
-                    )
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 18.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Longitude",
-                      style: headstyle,
-                    ),
-                    Text(
-                      citylocations.first.longitude.toString(),
-                      style: hintstyle,
-                    )
-                  ],
-                ),
-              ),*/
-              Padding(
-                padding: const EdgeInsets.only(bottom: 18.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Elevation",
-                      style: headstyle,
-                    ),
-                    Text(
-                      citylocations.first.elevation.toString(),
-                      style: hintstyle,
-                    )
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 18.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Population",
-                      style: headstyle,
-                    ),
-                    Text(
-                      citylocations.first.population.toString(),
-                      style: hintstyle,
-                    )
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 18.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Country",
-                      style: headstyle,
-                    ),
-                    Text(
-                      citylocations.first.country.toString(),
-                      style: hintstyle,
-                    )
-                  ],
-                ),
+              _buildlocationrow(
+                "Country",
+                citylocations.first.country.toString(),
               ),
               Flexible(
                 child: InkWell(
@@ -223,7 +162,9 @@ Widget buildcitylocationbody(
                     },
                     child: GetWeatherButton(context)),
               ),
-              SizedBox(height: 110,)
+              SizedBox(
+                height: 50,
+              )
             ]),
       ),
     ),
