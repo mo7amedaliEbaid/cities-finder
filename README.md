@@ -54,6 +54,7 @@ normal
    <img src="https://github.com/mo7amedaliEbaid/weather-app/blob/52f71628539c5f555d1537007be30113efb75f23/screenshots/normal/location.jpg" width="170" />
    <img src="https://github.com/mo7amedaliEbaid/weather-app/blob/52f71628539c5f555d1537007be30113efb75f23/screenshots/normal/maps.jpg" width="170" />
    <img src="https://github.com/mo7amedaliEbaid/weather-app/blob/52f71628539c5f555d1537007be30113efb75f23/screenshots/normal/mapstheme.jpg" width="170" />
+   <img src="https://github.com/mo7amedaliEbaid/weather-app/blob/3e16f4fb85f2dd236c744c7a03b9e1d0546c7921/screenshots/normal/exit.jpg" width="170" />
 </p>     
 
 <br/>
