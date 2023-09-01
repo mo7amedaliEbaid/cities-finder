@@ -32,7 +32,7 @@ A Flutter app to get the location ,weather ,time and other information for any c
 ### Attention.
 Google Api Key is required.   
 
-In AndroidManifest.xml
+And in AndroidManifest.xml add 👇
 ```
 <meta-data android:name="com.google.android.geo.API_KEY"
        android:value="YOUR GOOGLE API KEY"/>
